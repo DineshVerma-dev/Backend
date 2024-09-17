@@ -3,8 +3,6 @@ import { Strategy as LocalStrategy } from "passport-local";
 import Person from "../models/person.model.js";
 
 
-
-
 passport.use(new LocalStrategy(
     async (USERNAME, password, done) => {
         try {
@@ -13,8 +11,9 @@ passport.use(new LocalStrategy(
             if (!user) {
                 return done(null, false, { message: 'Incorrect Username' })
             }
-
-            const isPasswordMatch = user.password === password ? true : false;
+            
+            const isPasswordMatch = await user.comparePassword(password)
+            //const isPasswordMatch = user.password === password ? true : false;
             if (isPasswordMatch) {
                 return done(null, user);
             } else {
