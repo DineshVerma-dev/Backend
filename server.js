@@ -1,6 +1,7 @@
 import express from "express";
 import connectDB from "./database/database.js";
 import Authenticationmiddleware from "./middleware/auth.js";
+import { jwtAuthMiddleware } from "./middleware/jwt.js";
 
 
 const app = express();
@@ -17,7 +18,7 @@ app.get("/", function (req, res, next) {
 import PersonRoutes from "./routes/person.route.js"
 import menuRoutes from "./routes/menu.route.js"
 
-app.use("/person", Authenticationmiddleware, PersonRoutes)
+app.use("/person", PersonRoutes)
 app.use("/menu", menuRoutes)
 
 app.listen(PORT, () => {
