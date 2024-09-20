@@ -9,7 +9,7 @@ connectDB();
 
 app.use(express.json())
 
-app.get("/",Authenticationmiddleware ,function(req,res,next){
+app.get("/", function (req, res, next) {
     console.log("welcome to learn nodejs ")
     res.send("welcome to learning nodej and password")
     next()
@@ -17,7 +17,7 @@ app.get("/",Authenticationmiddleware ,function(req,res,next){
 import PersonRoutes from "./routes/person.route.js"
 import menuRoutes from "./routes/menu.route.js"
 
-app.use("/person",Authenticationmiddleware, PersonRoutes)
+app.use("/person", Authenticationmiddleware, PersonRoutes)
 app.use("/menu", menuRoutes)
 
 app.listen(PORT, () => {

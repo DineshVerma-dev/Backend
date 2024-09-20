@@ -4,7 +4,7 @@ import Person from '../models/person.model.js';
 
 const router = Router()
 
-router.route("/").post(async (req, res) => {
+router.route("/signup").post(async (req, res) => {
     try {
         const data = req.body
         const newPerson = new Person(data)
